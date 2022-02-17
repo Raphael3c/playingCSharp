@@ -2,7 +2,7 @@ namespace DigitalInnovationOne.Models
 {
     public class Aluno
     {
-        private int _alunoId { get; set; }
+        private int _matricula { get; set; }
 
         private string _nome { get; set; }
 
@@ -26,8 +26,8 @@ namespace DigitalInnovationOne.Models
 
         public Aluno(){}
 
-        public Aluno(string nome, string idade, string serie, string datanasc){
-            _alunoId = 1;
+        public Aluno(int matricula, string nome, string idade, string serie, string datanasc){
+            _matricula = matricula;
             _nome = nome;
             _idade = idade;
             _serie = serie;
@@ -35,7 +35,7 @@ namespace DigitalInnovationOne.Models
         }
 
         public override string ToString(){
-            string var = $"Aluno: {_nome}\nIdade: {_idade}\nSerie: {_serie}\nNascimento: {_datanasc}";
+            string var = $"Matricula: {_matricula} Aluno: {_nome}\nIdade: {_idade}\nSerie: {_serie}\nNascimento: {_datanasc}";
             return var;
         }
     }
