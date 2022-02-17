@@ -44,6 +44,11 @@ try
         break;
       };
       break;
+      case "2":
+        foreach (KeyValuePair<int, Aluno> Aluno in banco){
+          System.Console.WriteLine(Aluno.ToString());
+        }
+      break;
     default:
       throw new ArgumentException("Opção não selecionada");
   }
