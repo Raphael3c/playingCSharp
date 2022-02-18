@@ -2,15 +2,15 @@ namespace DigitalInnovationOne.Models
 {
     public class Aluno
     {
-        private int _matricula { get; set; }
+        public int _matricula { get; set; }
 
-        private string _nome { get; set; }
+        public string _nome { get; set; }
 
-        private string _idade { get; set; }
+        public string _idade { get; set; }
 
-        private string _serie { get; set; }
+        public string _serie { get; set; }
 
-        private DateOnly _datanasc { get; set; }
+        public DateOnly _datanasc { get; set; }
 
         public string DataNasc { 
             get{
