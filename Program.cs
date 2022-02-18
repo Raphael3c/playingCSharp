@@ -4,14 +4,22 @@ int baseId = 428199;
 
 Dictionary<int, Aluno> banco = new Dictionary<int, Aluno>();
 // See https://aka.ms/new-console-template for more information
-string optionSelected = selectOptionMainMenu();
 
-try
-{ 
-  switch (optionSelected)
+  while (true)
+{
+  try
   {
-    case "1":
-      while (true){
+    Console.WriteLine("Informe a opção desejada");
+    Console.WriteLine("1 - Inserir novo aluno");
+    Console.WriteLine("2 - Listar alunos");
+    Console.WriteLine("3 - Calcular média geral");
+    string optionSelected = Console.ReadLine();
+    Console.WriteLine("");
+    switch (optionSelected)
+    {
+      case "1":
+      while (true)
+      {
         Console.Clear();
         Console.WriteLine("Informe o nome do aluno:");
         string nome = Console.ReadLine();
@@ -32,42 +40,43 @@ try
         banco.Add(matricula, alunoCriado);
 
         Console.WriteLine("\nAluno criado com sucesso! Dados inseridos no banco:");
-        System.Console.WriteLine(alunoCriado.ToString()+"\n");
+        System.Console.WriteLine(alunoCriado.ToString() + "\n");
+
         Console.WriteLine("Cadastrar outro Aluno?");
         Console.WriteLine("Para sim - Digite s/S");
         Console.WriteLine("Para não - Digite n/N");
         char escolha = Char.Parse(Console.ReadLine());
-
-        if((char.ToLower(escolha) == 's')){
+        if ((char.ToLower(escolha) == 's'))
+        {
           continue;
         };
         break;
       };
       break;
       case "2":
-        foreach (KeyValuePair<int, Aluno> Aluno in banco){
-          System.Console.WriteLine(Aluno.ToString());
-        }
+
+        if(banco.Count == 0){
+          throw new ApplicationException("Não há usuários no banco");
+        };
+
+        foreach(KeyValuePair<int, Aluno> AlunoX in banco){
+          System.Console.WriteLine("===========================================");
+          System.Console.WriteLine(AlunoX.Value.ToString());
+          System.Console.WriteLine("===========================================");
+        };
+
       break;
-    default:
-      throw new ArgumentException("Opção não selecionada");
+      default:
+        throw new ArgumentException("Opção não selecionada");
+    }
   }
-}catch (ArgumentException error)
-{   
-  Console.Write(error);
-}finally{
-  Console.Clear();
-  optionSelected = selectOptionMainMenu();
-};
-
-string selectOptionMainMenu(){
-  Console.WriteLine("Informe a opção desejada");
-  Console.WriteLine("1 - Inserir novo aluno");
-  Console.WriteLine("2 - Listar alunos");
-  Console.WriteLine("3 - Calcular média geral");
-  Console.WriteLine("");
-
-  string optionSelected = Console.ReadLine();
-
-  return optionSelected;
+  catch (Exception error)
+  {
+    Console.Write(error);
+  }
+  finally
+  {
+    Console.ReadLine();
+    Console.Clear();
+  };
 }

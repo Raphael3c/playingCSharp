@@ -35,7 +35,7 @@ namespace DigitalInnovationOne.Models
         }
 
         public override string ToString(){
-            string var = $"Matricula: {_matricula} Aluno: {_nome}\nIdade: {_idade}\nSerie: {_serie}\nNascimento: {_datanasc}";
+            string var = $"Matricula: {_matricula}\nAluno: {_nome}\nIdade: {_idade}\nSerie: {_serie}\nNascimento: {_datanasc}";
             return var;
         }
     }
