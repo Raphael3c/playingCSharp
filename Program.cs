@@ -19,41 +19,22 @@ Dictionary<int, Aluno> banco = new Dictionary<int, Aluno>();
     switch (optionSelected)
     {
       case "1":
-      while (true)
-      {
-        Console.Clear();
-        Console.WriteLine("Informe o nome do aluno:");
-        string nome = Console.ReadLine();
-
-        Console.WriteLine("Informe a idade do aluno:");
-        string idade = Console.ReadLine();
-
-        Console.WriteLine("Informe a serie do aluno:");
-        string serie = Console.ReadLine();
-
-        Console.WriteLine("Informe a data de nascimento do aluno:");
-        string datanasc = Console.ReadLine();
-
-        baseId++;
-
-        int matricula = baseId;
-        Aluno alunoCriado = new Aluno(matricula, nome, idade, serie, datanasc);
-        banco.Add(matricula, alunoCriado);
-
-        Console.WriteLine("\nAluno criado com sucesso! Dados inseridos no banco:");
-        System.Console.WriteLine(alunoCriado.ToString() + "\n");
-
-        Console.WriteLine("Cadastrar outro Aluno?");
-        Console.WriteLine("Para sim - Digite s/S");
-        Console.WriteLine("Para não - Digite n/N");
-        char escolha = Char.Parse(Console.ReadLine());
-        if ((char.ToLower(escolha) == 's'))
+        while (true)
         {
-          continue;
+          Console.Clear();
+          criarAluno();
+          Console.WriteLine("Cadastrar outro Aluno?");
+          Console.WriteLine("Para sim - Digite s/S");
+          Console.WriteLine("Para não - Digite n/N");
+          char escolha = Char.Parse(Console.ReadLine());
+          if ((char.ToLower(escolha) == 's'))
+          {
+            continue;
+          };
+          break;
         };
-        break;
-      };
       break;
+
       case "2":
         if(banco.Count == 0){
             throw new ApplicationException("Não há usuários no banco");
@@ -75,6 +56,11 @@ Dictionary<int, Aluno> banco = new Dictionary<int, Aluno>();
         };
 
       break;
+
+      case "3":
+        
+      break;
+
       default:
         throw new ArgumentException("Opção não selecionada");
     }
@@ -97,6 +83,29 @@ void listarTodosAlunos(){
     System.Console.WriteLine(AlunoX.Value.ToString());
     System.Console.WriteLine("===========================================");
   };
+};
+
+void criarAluno(){
+  Console.WriteLine("Informe o nome do aluno:");
+  string nome = Console.ReadLine();
+
+  Console.WriteLine("Informe a idade do aluno:");
+  string idade = Console.ReadLine();
+
+  Console.WriteLine("Informe a serie do aluno:");
+  string serie = Console.ReadLine();
+
+  Console.WriteLine("Informe a data de nascimento do aluno:");
+  string datanasc = Console.ReadLine();
+
+  baseId++;
+
+  int matricula = baseId;
+  Aluno alunoCriado = new Aluno(matricula, nome, idade, serie, datanasc);
+  banco.Add(matricula, alunoCriado);
+
+  Console.WriteLine("\nAluno criado com sucesso! Dados inseridos no banco:");
+  System.Console.WriteLine(alunoCriado.ToString() + "\n");
 };
 
 void listarUmAluno(){
