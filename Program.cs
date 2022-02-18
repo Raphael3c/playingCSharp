@@ -12,7 +12,8 @@ Dictionary<int, Aluno> banco = new Dictionary<int, Aluno>();
     Console.WriteLine("Informe a opção desejada");
     Console.WriteLine("1 - Inserir novo aluno");
     Console.WriteLine("2 - Listar alunos");
-    Console.WriteLine("3 - Calcular média geral");
+    Console.WriteLine("3 - Editar aluno");
+    Console.WriteLine("4 - Calcular média geral");
     string optionSelected = Console.ReadLine();
     Console.WriteLine("");
     switch (optionSelected)
@@ -54,15 +55,23 @@ Dictionary<int, Aluno> banco = new Dictionary<int, Aluno>();
       };
       break;
       case "2":
-
         if(banco.Count == 0){
-          throw new ApplicationException("Não há usuários no banco");
+            throw new ApplicationException("Não há usuários no banco");
         };
 
-        foreach(KeyValuePair<int, Aluno> AlunoX in banco){
-          System.Console.WriteLine("===========================================");
-          System.Console.WriteLine(AlunoX.Value.ToString());
-          System.Console.WriteLine("===========================================");
+        System.Console.WriteLine("1 - Listar todos alunos");
+        System.Console.WriteLine("2 - Listar somente um aluno");
+        optionSelected = Console.ReadLine(); 
+
+        switch(optionSelected){
+          case "1":
+            listarTodosAlunos();
+          break;
+          case "2":
+            listarUmAluno();
+            break;
+          default:
+            throw new ArgumentException("Opção não selecionada");
         };
 
       break;
@@ -80,3 +89,25 @@ Dictionary<int, Aluno> banco = new Dictionary<int, Aluno>();
     Console.Clear();
   };
 }
+
+void listarTodosAlunos(){
+   foreach(KeyValuePair<int, Aluno> AlunoX in banco)
+  {
+    System.Console.WriteLine("===========================================");
+    System.Console.WriteLine(AlunoX.Value.ToString());
+    System.Console.WriteLine("===========================================");
+  };
+};
+
+void listarUmAluno(){
+  System.Console.WriteLine("Digite a matricula do aluno:");
+
+  int matricula = int.Parse(Console.ReadLine());
+
+  try{
+    Aluno teste = banco.GetValueOrDefault(matricula);
+    System.Console.WriteLine(teste.ToString());
+  }catch(Exception){
+    throw new ArgumentException("Matricula não encontrada.");
+  };
+};
